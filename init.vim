@@ -27,6 +27,7 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'caenrique/nvim-toggle-terminal'
 Plug 'mhartington/oceanic-next'
+Plug 'flazz/vim-colorschemes'
 call plug#end()
 
 
@@ -37,12 +38,14 @@ let g:airline_theme='transparent'
 let g:netrw_browse_split=3
 let g:netrw_banner=0
 let g:netrw_liststyle=3
-colorscheme moonfly 
+colorscheme monokai-phoenix
+
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 
 nnoremap <C-Tab> :bprevious<CR>
 hi Normal guibg=NONE ctermbg=NONE
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 
 
