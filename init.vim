@@ -1,4 +1,5 @@
 set number
+set relativenumber
 set autoindent
 set smarttab
 set tabstop=4
@@ -6,6 +7,7 @@ set shiftwidth=4
 set softtabstop=4
 set mouse=a
 set noswapfile
+set guicursor=n-v-c-i:block
 
 
 call plug#begin()
@@ -28,6 +30,7 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'caenrique/nvim-toggle-terminal'
 Plug 'mhartington/oceanic-next'
 Plug 'flazz/vim-colorschemes'
+Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
 
 
@@ -38,15 +41,16 @@ let g:airline_theme='transparent'
 let g:netrw_browse_split=3
 let g:netrw_banner=0
 let g:netrw_liststyle=3
-colorscheme monokai-phoenix
+let mapleader=" "
+colorscheme gruvbox
 
 
 nnoremap <C-n> :NERDTreeToggle<CR>
-
-nnoremap <C-Tab> :bprevious<CR>
+nnoremap <C-e> gt<CR>
+nnoremap tt :tabnew <bar> :NERDTreeToggle <CR>
+nnoremap <Leader>qq ZZ <CR>
 hi Normal guibg=NONE ctermbg=NONE
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-
 
 
 " Neovide configuration
@@ -58,18 +62,12 @@ set guifont=Iosevka\ Term
 
 
 
-
-
 lua <<EOF
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+   additional_vim_regex_highlighting = false,
   },
 }
 
